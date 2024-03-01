@@ -3,7 +3,7 @@ package cmd
 var (
 	Domain  string
 	TimeOut int
-	Weh     bool
+	Web     bool
 	Address string
 	Port    string
 )
