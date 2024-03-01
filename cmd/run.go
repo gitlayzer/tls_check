@@ -18,7 +18,7 @@ func init() {
 	// 支持传递参数 -t 指定超时时间,单位为秒
 	flag.IntVar(&TimeOut, "t", 5, "Please enter a valid timeout, the unit is seconds, the default is 5 seconds")
 	// 支持传递参数 -w 指定是否开启 HTTP 服务
-	flag.BoolVar(&Weh, "w", false, "This parameter is used to enable web，default is false，default port is 8080")
+	flag.BoolVar(&Web, "w", false, "This parameter is used to enable web，default is false，default port is 8080")
 	// 支持传递参数 -a 指定 HTTP 服务的地址
 	flag.StringVar(&Address, "a", "0.0.0.0", "This parameter is used to specify the address of the HTTP service")
 	// 支持传递参数 -p 指定 HTTP 服务的端口
@@ -94,7 +94,7 @@ func handleCheckCertExpiration(w http.ResponseWriter, r *http.Request) {
 // Run 函数，执行函数
 func Run() {
 	// 判断是否开启 HTTP 服务
-	if Weh {
+	if Web {
 		http.HandleFunc("/check", handleCheckCertExpiration)
 		err := http.ListenAndServe(Address+":"+Port, nil)
 		if err != nil {
